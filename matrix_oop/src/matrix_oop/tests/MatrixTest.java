@@ -23,5 +23,4 @@ class MatrixTest {
 		};
 		assertTrue(Arrays.deepEquals(rows, matrix.getElementsRowArrays()));
 	}
-
 }
