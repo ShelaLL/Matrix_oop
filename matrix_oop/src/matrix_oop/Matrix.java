@@ -13,6 +13,9 @@ import java.util.stream.IntStream;
  */
 public class Matrix {
 	
+	private int nbRows;
+	private double[] elements;
+
 	/**
 	 * @basic
 	 */
@@ -54,8 +57,8 @@ public class Matrix {
 	 * 
 	 * @inspects specify which objects is inspected or mutated(@mutates)
 	 * 		 | elementsRowMajor
-	 * @mutates no need to write this here, because it is implicit
-	 * It is wrong in the sense that the object does not exist yet before you call the constructor
+	 * mutates no need to write this here, because it is implicit
+	 * 
 	 * 
 	 * @throws IllegalArgumentException | nbRows < 1
 	 * @throws IllegalArgumentException | nbColumns < 1
@@ -67,6 +70,15 @@ public class Matrix {
 	 * Cannot be writen into getElementsRowMajor() == elementsRowMajor, or a copy is needed
 	 */
 
-	public Matrix(int nbRows, int nbColumns, double[] elementsRowMajor) {throw new RuntimeException("Not yet implemented");}
+	public Matrix(int nbRows, int nbColumns, double[] elementsRowMajor) {
+		if (nbRows < 1) 
+			throw new IllegalArgumentException("`nbRows is less than 1`");
+		if (nbColumns <1) 
+			throw new IllegalArgumentException("`nbRows is less than 1`");
+		if(elementsRowMajor.length != nbRows * nbColumns)
+			throw new IllegalArgumentException("length of `elementsRowMajor` is wrong");
+			
+		this.nbRows = nbRows;
+		this.elements = elementsRowMajor.clone();
+	}
 }
-
