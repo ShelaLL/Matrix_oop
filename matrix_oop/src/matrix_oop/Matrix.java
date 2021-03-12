@@ -27,6 +27,8 @@ public class Matrix {
 	/**
 	 * @basic
 	 */
+	
+	
 	public int getNbRows() {
 		return nbRows;
 	}
@@ -73,7 +75,7 @@ public class Matrix {
 		return rows;
 	}
 
-	//When we define the API, we should also document the constructor
+
 	public Matrix(int nbRows, int nbColumns, double[] elementsRowMajor) {
 		if(nbRows < 1)
 			throw new IllegalArgumentException("`nbRows` is less than 1");
