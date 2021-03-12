@@ -19,7 +19,7 @@ public class Matrix {
 	 * @invar | elements.length % nbRows == 0
 	 */
 	private int nbRows;
-    
+	
 	/**
 	 * @representationObject
 	 */
