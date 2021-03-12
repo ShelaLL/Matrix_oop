@@ -12,14 +12,14 @@ import java.util.stream.IntStream;
  * @invar | 1 <= getNbColumns()
  */
 public class Matrix {
-	
+
 	/**
 	 * @invar | 1 <= nbRows
 	 * @invar | elements != null
 	 * @invar | elements.length % nbRows == 0
 	 */
 	private int nbRows;
-	
+
 	/**
 	 * @representationObject
 	 */
@@ -70,7 +70,7 @@ public class Matrix {
 		}
 		return matrixRows;
 	}
-	
+
 	/**
 	 * Initializes this object so that it represents the matrix with the given number of rows and columns
 	 * and the given elements. The elements are given as an array in row major order
@@ -97,8 +97,9 @@ public class Matrix {
 			throw new IllegalArgumentException("`nbRows is less than 1`");
 		if(elementsRowMajor.length != nbRows * nbColumns)
 			throw new IllegalArgumentException("length of `elementsRowMajor` is wrong");
-			
+
 		this.nbRows = nbRows;
 		this.elements = elementsRowMajor.clone();
 	}
+
 }
