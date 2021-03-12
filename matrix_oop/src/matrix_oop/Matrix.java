@@ -82,3 +82,4 @@ public class Matrix {
 	public Matrix(int nbRows, int nbColumns, double[] elementsRowMajor) {throw new RuntimeException("Not yet implemented");}
 }
 
+
