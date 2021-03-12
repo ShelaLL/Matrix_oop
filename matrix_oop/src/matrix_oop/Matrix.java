@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
  * @invar | 1 <= getNbColumns()
  */
 public class Matrix {
-
+	
 	/**
 	 * @basic
 	 */
