@@ -21,6 +21,7 @@ class MatrixTest {
 				{0, 1},
 				{0, 0}
 		};
+		
 		assertTrue(Arrays.deepEquals(rows, matrix.getElementsRowArrays()));
 	}
 }

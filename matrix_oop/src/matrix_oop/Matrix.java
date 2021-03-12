@@ -93,6 +93,7 @@ public class Matrix {
 			for(int columnIndex = 0; columnIndex < nbColumns; columnIndex++) 
 				elements[columnIndex * nbRows + rowIndex] = elementsRowMajor[rowIndex * nbColumns + columnIndex];
 		}
+		
 	}
 }
 
