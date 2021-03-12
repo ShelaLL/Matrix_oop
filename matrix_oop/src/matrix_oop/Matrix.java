@@ -12,13 +12,29 @@ import java.util.stream.IntStream;
  * @invar | 1 <= getNbColumns()
  */
 public class Matrix {
-	
+
+	/**
+	 * @invar | 1 <= nbRows
+	 * @invar | elements != null
+	 * @invar | elements.length % nbRows == 0
+	 */
+	private int nbRows;
+	/**
+	 * @representationObject
+	 * This is the representation object because our inspectors depend on it
+	 */
+	//???
+	private double[] elements;
+
 	/**
 	 * @basic
 	 */
-	public int getNbRows() {throw new RuntimeException("Not yet implemented");}
+	public int getNbRows() {
+		return nbRows;
+	}
 
 	/**
+	 * @inspects | this
 	 * @basic
 	 * @creates | result
 	 * Since this inspector returns a mutable object, we should specify whether it is an existing object or a new one
@@ -26,13 +42,17 @@ public class Matrix {
 	 * Creates clause tells the client whether this object he will return that he will have complete control over
 	 * Guarantee to the client that this obejct will not be changed by class Matrix after at the end of this method calls
 	 */
-	public double[] getElementsRowMajor() {throw new RuntimeException("Not yet implemented");}
+	public double[] getElementsRowMajor() {
+		return elements.clone();
+	}
 
 	/**
 	 * @post | result == getElementsRowMajor().length / getNbRows()
 	 *  In any case we should not mention fields in a post condition or a public method???
 	 */
-	public int getNbColumns() {throw new RuntimeException("Not yet implemented");}
+	public int getNbColumns() {
+		return elements.length / nbRows;
+	}
 
 	/**
 	 * @post | result != null
@@ -46,9 +66,19 @@ public class Matrix {
 	 * @creates | result, ...result
 	 * same thing holds for the result of the getElementsRowArrays() method and also the elements of the resulting array are all new array objects
 	 */
-	public double[][] getElementsRowArrays() {throw new RuntimeException("Not yet implemented");}
+	public double[][] getElementsRowArrays() {
+		int nbColumns = getNbColumns();
+		double[][] rows = new double[nbRows][];
+		for(int rowIndex = 0; rowIndex < nbRows; rowIndex++) {
+			rows[rowIndex] = new double[nbColumns];
+			for(int columnIndex = 0; columnIndex < nbColumns; columnIndex++) {
+				rows[rowIndex][columnIndex] = elements[rowIndex * nbColumns + columnIndex]; //???different from above
+			}
+		}
+		return rows;
+	}
 	
-	
+	//When we define the API, we should also document the constructor
 	public Matrix(int nbRows, int nbColumns, double[] elementsRowMajor) {throw new RuntimeException("Not yet implemented");}
 }
 
