@@ -27,7 +27,7 @@ class MatrixTest {
 		double[][] rows2 = {
 				{1, 0},
 				{0, 1},
-				{0, 0}
+				{2, 2}
 		};
 		assertTrue(Arrays.deepEquals(rows2, matrix.getElementsRowArrays()));
 	}
