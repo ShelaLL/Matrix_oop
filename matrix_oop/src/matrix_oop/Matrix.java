@@ -95,13 +95,15 @@ public class Matrix {
 			throw new IllegalArgumentException("`nbRows is less than 1`");
 		if (nbColumns <1) 
 			throw new IllegalArgumentException("`nbRows is less than 1`");
+		if(elementsRowMajor == null)
+			throw new IllegalArgumentException("`elementsRowajor` is null");
 		if(elementsRowMajor.length != nbRows * nbColumns)
 			throw new IllegalArgumentException("length of `elementsRowMajor` is wrong");
 
 		this.nbRows = nbRows;
 		this.elements = elementsRowMajor.clone();
 	}
-	
+
 	/**
 	 * Adds the given matrix to this matrix
 	 * 
@@ -117,6 +119,16 @@ public class Matrix {
 	 * @post | IntStream.range(0, getNbRows() * getNbColumns()).allMatch(i ->
 	 *       |		getElementsRowMajor()[i] == old(getElementsRowMajor())[i] + other.getElementsRowMajor()[i])
 	 */
-	public void add(Matrix other) {throw new RuntimeException("Not yet implemented");}
-	
+	public void add(Matrix other) {
+		if (other == null)
+			throw new IllegalArgumentException("`other` is null");
+		if (other.getNbRows() != this.getNbRows() || other.getNbColumns() != this.getNbColumns())
+			throw new IllegalArgumentException("`other`'s shape is wrong");
+			
+		int nbColumns = elements.length / nbRows;
+		for(int rowIndex = 0; rowIndex < nbRows; rowIndex++) 
+			for(int columnIndex = 0; columnIndex < nbColumns; columnIndex++)
+				elements[rowIndex * nbColumns + columnIndex] += other.elements[rowIndex * nbColumns + columnIndex];
+
+	}
 }
